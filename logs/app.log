@@ -7,3 +7,57 @@
 2025-09-23 16:57:59 | src.api.v1.endpoints.image | INFO     | process_image_from_url:220 | Processamento via URL concluído com sucesso para: https://admin.rh.homolog.acesso.io/cdn2/t/320x440,q50/individual/db5db932-6ca4-48fe-9801-c237196b35ba/person/brazil/069e4655-1898-46a0-af5c-5c617b3ce884.jpeg
 2025-09-23 16:59:22 | root | INFO     | setup_logging:82 | Sistema de logging configurado - Nível: INFO
 2025-09-23 16:59:22 | root | INFO     | setup_logging:83 | Logs sendo salvos em: C:\GIT_lar\Remove_bg\rm_bg_back\logs
+2025-10-01 10:12:59 | root | INFO     | setup_logging:82 | Sistema de logging configurado - Nível: INFO
+2025-10-01 10:12:59 | root | INFO     | setup_logging:83 | Logs sendo salvos em: C:\GIT_lar\Remove_bg\rm_bg_back\logs
+2025-10-01 10:15:36 | src.api.v1.endpoints.image | INFO     | crop_round:42 | Iniciando /crop-round para o arquivo: 27f18058-4244-43c5-9750-ca5c6ca551ec.jpeg
+2025-10-01 10:15:37 | src.api.v1.endpoints.image | INFO     | crop_round:72 | Processamento de /crop-round para 27f18058-4244-43c5-9750-ca5c6ca551ec.jpeg concluído com sucesso.
+2025-10-01 10:15:50 | src.api.v1.endpoints.image | INFO     | crop_round:42 | Iniciando /crop-round para o arquivo: 31859576-199f-4d81-bbf7-f63dc192fdb6.jpeg
+2025-10-01 10:15:50 | src.api.v1.endpoints.image | INFO     | crop_round:72 | Processamento de /crop-round para 31859576-199f-4d81-bbf7-f63dc192fdb6.jpeg concluído com sucesso.
+2025-10-01 10:21:29 | root | INFO     | setup_logging:82 | Sistema de logging configurado - Nível: INFO
+2025-10-01 10:21:29 | root | INFO     | setup_logging:83 | Logs sendo salvos em: C:\GIT_lar\Remove_bg\rm_bg_back\logs
+2025-10-01 10:21:36 | src.api.v1.endpoints.image | INFO     | crop_round:42 | Iniciando /crop-round para o arquivo: 27f18058-4244-43c5-9750-ca5c6ca551ec.jpeg
+2025-10-01 10:21:37 | src.api.v1.endpoints.image | INFO     | crop_round:72 | Processamento de /crop-round para 27f18058-4244-43c5-9750-ca5c6ca551ec.jpeg concluído com sucesso.
+2025-10-01 10:23:56 | root | INFO     | setup_logging:82 | Sistema de logging configurado - Nível: INFO
+2025-10-01 10:23:56 | root | INFO     | setup_logging:83 | Logs sendo salvos em: C:\GIT_lar\Remove_bg\rm_bg_back\logs
+2025-10-01 10:24:03 | root | INFO     | setup_logging:82 | Sistema de logging configurado - Nível: INFO
+2025-10-01 10:24:03 | root | INFO     | setup_logging:83 | Logs sendo salvos em: C:\GIT_lar\Remove_bg\rm_bg_back\logs
+2025-10-01 10:24:10 | src.api.v1.endpoints.image | INFO     | crop_round:46 | Iniciando /crop-round para o arquivo: 27f18058-4244-43c5-9750-ca5c6ca551ec.jpeg
+2025-10-01 10:24:10 | src.api.v1.endpoints.image | INFO     | crop_round:60 | Face detectada para '27f18058-4244-43c5-9750-ca5c6ca551ec.jpeg' nas coordenadas: (np.int32(9), np.int32(2), np.int32(278), np.int32(278))
+2025-10-01 10:24:10 | src.api.v1.endpoints.image | INFO     | crop_round:67 | Imagem de debug com a face detectada salva em: debug_images\debug_ab25ff02-994f-4007-a73f-bfc55a234d45.jpg
+2025-10-01 10:24:10 | src.api.v1.endpoints.image | INFO     | crop_round:87 | Processamento de /crop-round para 27f18058-4244-43c5-9750-ca5c6ca551ec.jpeg concluído com sucesso.
+2025-10-01 10:24:13 | src.api.v1.endpoints.image | INFO     | crop_round:46 | Iniciando /crop-round para o arquivo: 27f18058-4244-43c5-9750-ca5c6ca551ec.jpeg
+2025-10-01 10:24:13 | src.api.v1.endpoints.image | INFO     | crop_round:60 | Face detectada para '27f18058-4244-43c5-9750-ca5c6ca551ec.jpeg' nas coordenadas: (np.int32(9), np.int32(2), np.int32(278), np.int32(278))
+2025-10-01 10:24:13 | src.api.v1.endpoints.image | INFO     | crop_round:67 | Imagem de debug com a face detectada salva em: debug_images\debug_25af1c58-8b3f-40ba-acdb-2884edb202d6.jpg
+2025-10-01 10:24:13 | src.api.v1.endpoints.image | INFO     | crop_round:87 | Processamento de /crop-round para 27f18058-4244-43c5-9750-ca5c6ca551ec.jpeg concluído com sucesso.
+2025-10-01 10:37:17 | root | INFO     | setup_logging:82 | Sistema de logging configurado - Nível: INFO
+2025-10-01 10:37:17 | root | INFO     | setup_logging:83 | Logs sendo salvos em: C:\GIT_lar\Remove_bg\rm_bg_back\logs
+2025-10-01 10:37:27 | src.api.v1.endpoints.image | INFO     | crop_round:46 | Iniciando /crop-round para o arquivo: 27f18058-4244-43c5-9750-ca5c6ca551ec.jpeg
+2025-10-01 10:37:27 | src.api.v1.endpoints.image | INFO     | crop_round:60 | Face detectada para '27f18058-4244-43c5-9750-ca5c6ca551ec.jpeg' nas coordenadas: (62, 164, 184, 184)
+2025-10-01 10:37:27 | src.api.v1.endpoints.image | INFO     | crop_round:67 | Imagem de debug com a face detectada salva em: debug_images\debug_e6fc7952-ea75-4223-b97b-adfffb5b02c6.jpg
+2025-10-01 10:37:27 | src.api.v1.endpoints.image | INFO     | crop_round:87 | Processamento de /crop-round para 27f18058-4244-43c5-9750-ca5c6ca551ec.jpeg concluído com sucesso.
+2025-10-01 10:37:30 | src.api.v1.endpoints.image | INFO     | crop_round:46 | Iniciando /crop-round para o arquivo: 27f18058-4244-43c5-9750-ca5c6ca551ec.jpeg
+2025-10-01 10:37:30 | src.api.v1.endpoints.image | INFO     | crop_round:60 | Face detectada para '27f18058-4244-43c5-9750-ca5c6ca551ec.jpeg' nas coordenadas: (62, 164, 184, 184)
+2025-10-01 10:37:30 | src.api.v1.endpoints.image | INFO     | crop_round:67 | Imagem de debug com a face detectada salva em: debug_images\debug_eccc29d4-ed54-448f-879a-abb024e93127.jpg
+2025-10-01 10:37:30 | src.api.v1.endpoints.image | INFO     | crop_round:87 | Processamento de /crop-round para 27f18058-4244-43c5-9750-ca5c6ca551ec.jpeg concluído com sucesso.
+2025-10-01 10:37:42 | src.api.v1.endpoints.image | INFO     | crop_round:46 | Iniciando /crop-round para o arquivo: 31859576-199f-4d81-bbf7-f63dc192fdb6.jpeg
+2025-10-01 10:37:42 | src.api.v1.endpoints.image | INFO     | crop_round:60 | Face detectada para '31859576-199f-4d81-bbf7-f63dc192fdb6.jpeg' nas coordenadas: (64, 213, 204, 204)
+2025-10-01 10:37:43 | src.api.v1.endpoints.image | INFO     | crop_round:67 | Imagem de debug com a face detectada salva em: debug_images\debug_c5965afc-9510-4842-8a6d-c9fb7217a7ff.jpg
+2025-10-01 10:37:43 | src.api.v1.endpoints.image | INFO     | crop_round:87 | Processamento de /crop-round para 31859576-199f-4d81-bbf7-f63dc192fdb6.jpeg concluído com sucesso.
+2025-10-01 10:37:49 | src.api.v1.endpoints.image | INFO     | crop_round:46 | Iniciando /crop-round para o arquivo: a63e8a56-31d1-4114-a434-e8db6a4d83d6.jpeg
+2025-10-01 10:37:49 | src.api.v1.endpoints.image | INFO     | crop_round:60 | Face detectada para 'a63e8a56-31d1-4114-a434-e8db6a4d83d6.jpeg' nas coordenadas: (77, 99, 170, 170)
+2025-10-01 10:37:49 | src.api.v1.endpoints.image | INFO     | crop_round:67 | Imagem de debug com a face detectada salva em: debug_images\debug_3efa885b-f33e-46c9-af98-f385fac758a6.jpg
+2025-10-01 10:37:49 | src.api.v1.endpoints.image | INFO     | crop_round:87 | Processamento de /crop-round para a63e8a56-31d1-4114-a434-e8db6a4d83d6.jpeg concluído com sucesso.
+2025-10-01 10:37:52 | src.api.v1.endpoints.image | INFO     | crop_round:46 | Iniciando /crop-round para o arquivo: a63e8a56-31d1-4114-a434-e8db6a4d83d6.jpeg
+2025-10-01 10:37:52 | src.api.v1.endpoints.image | INFO     | crop_round:60 | Face detectada para 'a63e8a56-31d1-4114-a434-e8db6a4d83d6.jpeg' nas coordenadas: (77, 99, 170, 170)
+2025-10-01 10:37:52 | src.api.v1.endpoints.image | INFO     | crop_round:67 | Imagem de debug com a face detectada salva em: debug_images\debug_28bc40d1-b192-4891-ad7c-2c1d1a289698.jpg
+2025-10-01 10:37:52 | src.api.v1.endpoints.image | INFO     | crop_round:87 | Processamento de /crop-round para a63e8a56-31d1-4114-a434-e8db6a4d83d6.jpeg concluído com sucesso.
+2025-10-01 10:38:59 | src.api.v1.endpoints.image | INFO     | crop_round:46 | Iniciando /crop-round para o arquivo: Mídia.jfif
+2025-10-01 10:38:59 | src.api.v1.endpoints.image | INFO     | crop_round:60 | Face detectada para 'Mídia.jfif' nas coordenadas: (341, 981, 453, 453)
+2025-10-01 10:38:59 | src.api.v1.endpoints.image | INFO     | crop_round:67 | Imagem de debug com a face detectada salva em: debug_images\debug_5740794c-37cb-4d15-a12c-7fbeefcca1b8.jpg
+2025-10-01 10:38:59 | src.api.v1.endpoints.image | INFO     | crop_round:87 | Processamento de /crop-round para Mídia.jfif concluído com sucesso.
+2025-10-01 10:39:11 | root | INFO     | setup_logging:82 | Sistema de logging configurado - Nível: INFO
+2025-10-01 10:39:11 | root | INFO     | setup_logging:83 | Logs sendo salvos em: C:\GIT_lar\Remove_bg\rm_bg_back\logs
+2025-10-01 10:39:52 | src.api.v1.endpoints.image | INFO     | crop_round:46 | Iniciando /crop-round para o arquivo: baixados.webp
+2025-10-01 10:39:52 | src.api.v1.endpoints.image | INFO     | crop_round:60 | Face detectada para 'baixados.webp' nas coordenadas: (72, 69, 55, 55)
+2025-10-01 10:39:52 | src.api.v1.endpoints.image | INFO     | crop_round:67 | Imagem de debug com a face detectada salva em: debug_images\debug_7d1c822e-6d2b-4980-a466-41098b56c63f.jpg
+2025-10-01 10:39:52 | src.api.v1.endpoints.image | INFO     | crop_round:87 | Processamento de /crop-round para baixados.webp concluído com sucesso.

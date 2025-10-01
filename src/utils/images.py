@@ -2,14 +2,16 @@ from PIL import Image, ImageDraw
 from typing import Tuple
 import numpy as np
 
-def crop_to_round_centered_on_face(pil_image: Image.Image, face_coords: Tuple[int, int, int, int], radius_scale: float = 1.9) -> Image.Image:
+def crop_to_round_centered_on_face(pil_image: Image.Image, face_coords: Tuple[int, int, int, int], radius_scale: float = 1.9, vertical_bias: float = 0.35, output_size: Tuple[int, int] = (512, 512)) -> Image.Image:
     """
     Recorta uma imagem em formato circular com a face centralizada no círculo.
     
     Args:
         pil_image: Imagem PIL
         face_coords: Coordenadas da face (x, y, w, h)
-        radius_scale: Escala para o tamanho do círculo em relação ao tamanho da face
+        radius_scale: Escala para o raio do círculo em relação ao tamanho da face.
+        vertical_bias: Ajuste vertical para o centro do recorte (0.5 = centro, < 0.5 = para cima).
+        output_size: O tamanho final (largura, altura) da imagem de saída.
     
     Returns:
         Image.Image: Imagem circular com a face centralizada
@@ -18,7 +20,8 @@ def crop_to_round_centered_on_face(pil_image: Image.Image, face_coords: Tuple[in
     
     # Centro da face detectada
     face_center_x = x + w // 2
-    face_center_y = y + h // 2
+    # Aplicar viés vertical para um melhor enquadramento de retrato
+    face_center_y = y + int(h * vertical_bias)
     
     # Calcular o raio baseado no tamanho da face
     face_size = max(w, h)
@@ -77,6 +80,10 @@ def crop_to_round_centered_on_face(pil_image: Image.Image, face_coords: Tuple[in
         result = result.convert("RGBA")
     result.putalpha(mask)
     
+    # Redimensionar para o tamanho de saída padrão
+    if result.size != output_size:
+        result = result.resize(output_size, Image.Resampling.LANCZOS)
+    
     return result
 
 def crop_round_portrait_composed(pil_image: Image.Image, face_coords: Tuple[int, int, int, int], radius_scale: float = 1.8, vertical_bias: float = 0.25, extra_margin_ratio: float = 0.30) -> Image.Image:
@@ -95,3 +102,20 @@ def crop_round_portrait_composed(pil_image: Image.Image, face_coords: Tuple[int,
     result = cropped.copy()
     result.putalpha(mask)
     return result
+
+def draw_face_on_image(pil_image: Image.Image, face_coords: Tuple[int, int, int, int]) -> Image.Image:
+    """
+    Desenha um retângulo vermelho ao redor da face detectada em uma cópia da imagem.
+
+    Args:
+        pil_image (Image.Image): A imagem original.
+        face_coords (Tuple[int, int, int, int]): As coordenadas (x, y, w, h) da face.
+
+    Returns:
+        Image.Image: Uma nova imagem com o retângulo desenhado.
+    """
+    debug_image = pil_image.copy()
+    draw = ImageDraw.Draw(debug_image)
+    x, y, w, h = face_coords
+    draw.rectangle([x, y, x + w, y + h], outline="red", width=5)
+    return debug_image

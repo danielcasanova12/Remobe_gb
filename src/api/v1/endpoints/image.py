@@ -2,7 +2,7 @@ from fastapi import APIRouter, UploadFile, File, HTTPException, status, Request
 from fastapi.responses import Response
 from src.services.face import detect_face_from_bytes
 from src.services.background import remove_bg
-from src.utils.images import crop_to_round_centered_on_face, crop_round_portrait_composed
+from src.utils.images import crop_to_round_centered_on_face, crop_round_portrait_composed, draw_face_on_image
 from src.utils.io import bytes_to_png_rgba
 from PIL import Image
 import io
@@ -20,6 +20,10 @@ logger = logging.getLogger(__name__)
 # Diretório para armazenar temporariamente as imagens processadas
 TEMP_DIR = "temp_images"
 os.makedirs(TEMP_DIR, exist_ok=True)
+
+# Diretório para imagens de depuração
+DEBUG_DIR = "debug_images"
+os.makedirs(DEBUG_DIR, exist_ok=True)
 
 # Modelos Pydantic
 class ImageUrlRequest(BaseModel):
@@ -52,8 +56,19 @@ async def crop_round(file: UploadFile = File(...), use_fallback: bool = True):
         logger.debug("Tentando detectar face...")
         face_coords = detect_face_from_bytes(image_bytes)
         
-        if not face_coords:
-            logger.warning("Nenhuma face encontrada na imagem.")
+        if face_coords:
+            logger.info(f"Face detectada para '{file.filename}' nas coordenadas: {face_coords}")
+            # Salvar imagem de debug com o retângulo da face
+            try:
+                debug_image = draw_face_on_image(pil_image, face_coords)
+                debug_filename = f"debug_{uuid.uuid4()}.jpg"
+                debug_filepath = os.path.join(DEBUG_DIR, debug_filename)
+                debug_image.convert("RGB").save(debug_filepath, "JPEG")
+                logger.info(f"Imagem de debug com a face detectada salva em: {debug_filepath}")
+            except Exception as e:
+                logger.error(f"Falha ao salvar imagem de debug: {str(e)}")
+        else:
+            logger.warning(f"Nenhuma face encontrada na imagem: {file.filename}")
             if not use_fallback:
                 logger.error("Nenhuma face encontrada e fallback está desativado.")
                 raise HTTPException(status_code=404, detail="Nenhuma face encontrada na imagem.")
