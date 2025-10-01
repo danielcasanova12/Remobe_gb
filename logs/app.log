@@ -1,0 +1,9 @@
+2025-09-23 11:44:06 | root | INFO     | setup_logging:82 | Sistema de logging configurado - Nível: INFO
+2025-09-23 11:44:06 | root | INFO     | setup_logging:83 | Logs sendo salvos em: C:\GIT_lar\Remove_bg\rm_bg_back\logs
+2025-09-23 11:44:15 | root | INFO     | setup_logging:82 | Sistema de logging configurado - Nível: INFO
+2025-09-23 11:44:15 | root | INFO     | setup_logging:83 | Logs sendo salvos em: C:\GIT_lar\Remove_bg\rm_bg_back\logs
+2025-09-23 16:56:47 | src.api.v1.endpoints.image | INFO     | process_image_from_url:171 | Iniciando processamento via URL: https://admin.rh.homolog.acesso.io/cdn2/t/320x440,q50/individual/db5db932-6ca4-48fe-9801-c237196b35ba/person/brazil/069e4655-1898-46a0-af5c-5c617b3ce884.jpeg com modelo birefnet-general
+2025-09-23 16:57:59 | src.api.v1.endpoints.image | INFO     | process_image_from_url:207 | Imagem processada salva em: temp_images\processed_20250923_165759_c9ada927-1898-47ab-8200-def4bc0b91c7.png
+2025-09-23 16:57:59 | src.api.v1.endpoints.image | INFO     | process_image_from_url:220 | Processamento via URL concluído com sucesso para: https://admin.rh.homolog.acesso.io/cdn2/t/320x440,q50/individual/db5db932-6ca4-48fe-9801-c237196b35ba/person/brazil/069e4655-1898-46a0-af5c-5c617b3ce884.jpeg
+2025-09-23 16:59:22 | root | INFO     | setup_logging:82 | Sistema de logging configurado - Nível: INFO
+2025-09-23 16:59:22 | root | INFO     | setup_logging:83 | Logs sendo salvos em: C:\GIT_lar\Remove_bg\rm_bg_back\logs
