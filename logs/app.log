@@ -61,3 +61,27 @@
 2025-10-01 10:39:52 | src.api.v1.endpoints.image | INFO     | crop_round:60 | Face detectada para 'baixados.webp' nas coordenadas: (72, 69, 55, 55)
 2025-10-01 10:39:52 | src.api.v1.endpoints.image | INFO     | crop_round:67 | Imagem de debug com a face detectada salva em: debug_images\debug_7d1c822e-6d2b-4980-a466-41098b56c63f.jpg
 2025-10-01 10:39:52 | src.api.v1.endpoints.image | INFO     | crop_round:87 | Processamento de /crop-round para baixados.webp concluído com sucesso.
+2025-10-01 10:40:07 | root | INFO     | setup_logging:82 | Sistema de logging configurado - Nível: INFO
+2025-10-01 10:40:07 | root | INFO     | setup_logging:83 | Logs sendo salvos em: C:\GIT_lar\Remove_bg\rm_bg_back\logs
+2025-10-01 10:40:10 | src.api.v1.endpoints.image | INFO     | crop_round:46 | Iniciando /crop-round para o arquivo: baixados.webp
+2025-10-01 10:40:10 | src.api.v1.endpoints.image | INFO     | crop_round:60 | Face detectada para 'baixados.webp' nas coordenadas: (72, 69, 55, 55)
+2025-10-01 10:40:10 | src.api.v1.endpoints.image | INFO     | crop_round:67 | Imagem de debug com a face detectada salva em: debug_images\debug_89a24e52-f8cf-4d79-8d0d-6616995db9b2.jpg
+2025-10-01 10:40:10 | src.api.v1.endpoints.image | INFO     | crop_round:87 | Processamento de /crop-round para baixados.webp concluído com sucesso.
+2025-10-01 10:41:07 | src.api.v1.endpoints.image | INFO     | process_image_from_url:186 | Iniciando processamento via URL: https://admin.rh.homolog.acesso.io/cdn2/t/320x440,q50/individual/addca1f5-eec9-4c6f-9242-c8ce16383af3/person/brazil/6dd4676f-9a6f-4b55-95af-273ddd262a1c.jpeg com modelo birefnet-general
+2025-10-01 10:41:53 | src.api.v1.endpoints.image | INFO     | process_image_from_url:222 | Imagem processada salva em: temp_images\processed_20251001_104153_5ba4dcda-99aa-4e45-9616-5f401df96739.png
+2025-10-01 10:41:53 | src.api.v1.endpoints.image | INFO     | process_image_from_url:235 | Processamento via URL concluído com sucesso para: https://admin.rh.homolog.acesso.io/cdn2/t/320x440,q50/individual/addca1f5-eec9-4c6f-9242-c8ce16383af3/person/brazil/6dd4676f-9a6f-4b55-95af-273ddd262a1c.jpeg
+2025-10-01 10:55:55 | root | INFO     | setup_logging:82 | Sistema de logging configurado - Nível: INFO
+2025-10-01 10:55:55 | root | INFO     | setup_logging:83 | Logs sendo salvos em: C:\GIT_lar\Remove_bg\rm_bg_back\logs
+2025-10-01 10:56:09 | root | INFO     | setup_logging:82 | Sistema de logging configurado - Nível: INFO
+2025-10-01 10:56:09 | root | INFO     | setup_logging:83 | Logs sendo salvos em: C:\GIT_lar\Remove_bg\rm_bg_back\logs
+2025-10-01 10:56:51 | src.api.v1.endpoints.image | INFO     | process_image_from_url:190 | Iniciando processamento via URL: https://admin.rh.homolog.acesso.io/cdn2/t/320x440,q50/individual/addca1f5-eec9-4c6f-9242-c8ce16383af3/person/brazil/6dd4676f-9a6f-4b55-95af-273ddd262a1c.jpeg | Tipo: remove_bg | Modelo: birefnet-general
+2025-10-01 10:57:41 | src.api.v1.endpoints.image | INFO     | process_image_from_url:259 | Imagem processada salva em: temp_images\processed_20251001_105741_2efa161a-5227-44ed-92cd-0bf5b0434c25.png
+2025-10-01 10:57:42 | src.api.v1.endpoints.image | INFO     | process_image_from_url:272 | Processamento via URL concluído com sucesso para: https://admin.rh.homolog.acesso.io/cdn2/t/320x440,q50/individual/addca1f5-eec9-4c6f-9242-c8ce16383af3/person/brazil/6dd4676f-9a6f-4b55-95af-273ddd262a1c.jpeg
+2025-10-01 10:59:08 | src.api.v1.endpoints.image | INFO     | process_image_from_url:190 | Iniciando processamento via URL: https://admin.rh.homolog.acesso.io/cdn2/t/320x440,q50/individual/addca1f5-eec9-4c6f-9242-c8ce16383af3/person/brazil/6dd4676f-9a6f-4b55-95af-273ddd262a1c.jpeg | Tipo: crop | Modelo: birefnet-general
+2025-10-01 10:59:10 | src.api.v1.endpoints.image | INFO     | process_image_from_url:259 | Imagem processada salva em: temp_images\processed_20251001_105910_3905d40d-7990-4657-8b65-862dd36dd5ba.png
+2025-10-01 10:59:10 | src.api.v1.endpoints.image | INFO     | process_image_from_url:272 | Processamento via URL concluído com sucesso para: https://admin.rh.homolog.acesso.io/cdn2/t/320x440,q50/individual/addca1f5-eec9-4c6f-9242-c8ce16383af3/person/brazil/6dd4676f-9a6f-4b55-95af-273ddd262a1c.jpeg
+2025-10-01 10:59:57 | src.api.v1.endpoints.image | INFO     | process_image_from_url:190 | Iniciando processamento via URL: https://admin.rh.homolog.acesso.io/cdn2/t/320x440,q50/individual/addca1f5-eec9-4c6f-9242-c8ce16383af3/person/brazil/6dd4676f-9a6f-4b55-95af-273ddd262a1c.jpeg | Tipo: crop_remove_bg | Modelo: birefnet-general
+2025-10-01 11:01:22 | src.api.v1.endpoints.image | INFO     | process_image_from_url:259 | Imagem processada salva em: temp_images\processed_20251001_110122_4b832fac-aa2e-4cd8-b7a6-54ffb018c49f.png
+2025-10-01 11:01:22 | src.api.v1.endpoints.image | INFO     | process_image_from_url:272 | Processamento via URL concluído com sucesso para: https://admin.rh.homolog.acesso.io/cdn2/t/320x440,q50/individual/addca1f5-eec9-4c6f-9242-c8ce16383af3/person/brazil/6dd4676f-9a6f-4b55-95af-273ddd262a1c.jpeg
+2025-10-01 11:01:36 | root | INFO     | setup_logging:82 | Sistema de logging configurado - Nível: INFO
+2025-10-01 11:01:36 | root | INFO     | setup_logging:83 | Logs sendo salvos em: C:\GIT_lar\Remove_bg\rm_bg_back\logs

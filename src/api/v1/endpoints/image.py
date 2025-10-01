@@ -12,10 +12,25 @@ import uuid
 import os
 from datetime import datetime, timedelta
 from pydantic import BaseModel, HttpUrl
-from typing import Optional
+from typing import Optional, Literal
 
 router = APIRouter()
 logger = logging.getLogger(__name__)
+
+# Tipos de processamento para o endpoint de URL
+ProcessingType = Literal["crop", "remove_bg", "crop_remove_bg"]
+
+# Modelos Pydantic
+class ImageUrlRequest(BaseModel):
+    image_url: HttpUrl
+    model: str = "birefnet-general"  # Usado para remoção de fundo
+    processing_type: ProcessingType = "remove_bg"
+
+class ProcessedImageResponse(BaseModel):
+    processed_image_url: str
+    original_image_url: str
+    model_used: str
+    processed_at: str
 
 # Diretório para armazenar temporariamente as imagens processadas
 TEMP_DIR = "temp_images"
@@ -24,17 +39,6 @@ os.makedirs(TEMP_DIR, exist_ok=True)
 # Diretório para imagens de depuração
 DEBUG_DIR = "debug_images"
 os.makedirs(DEBUG_DIR, exist_ok=True)
-
-# Modelos Pydantic
-class ImageUrlRequest(BaseModel):
-    image_url: HttpUrl
-    model: str = "birefnet-general"
-
-class ProcessedImageResponse(BaseModel):
-    processed_image_url: str
-    original_image_url: str
-    model_used: str
-    processed_at: str
 
 
 @router.post("/crop-round/", summary="Recorta imagem em círculo centralizado na face")
@@ -180,13 +184,14 @@ for model in MODELS:
 @router.post("/process-url/", response_model=ProcessedImageResponse, summary="Remove fundo de imagem via URL usando birefnet-general")
 async def process_image_from_url(data: ImageUrlRequest, request: Request):
     """
-    Baixa uma imagem de uma URL, remove o fundo usando o modelo especificado (padrão: birefnet-general),
+    Baixa uma imagem de uma URL, processa-a (remove fundo, recorta, ou ambos),
     salva temporariamente e retorna um link para a imagem processada.
+    params: processing_type [remove_bg, crop, crop_remove_bg]
     """
-    logger.info(f"Iniciando processamento via URL: {data.image_url} com modelo {data.model}")
+    logger.info(f"Iniciando processamento via URL: {data.image_url} | Tipo: {data.processing_type} | Modelo: {data.model}")
     
     # Validar modelo
-    if data.model not in MODELS:
+    if data.processing_type in ["remove_bg", "crop_remove_bg"] and data.model not in MODELS:
         logger.error(f"Modelo não suportado: {data.model}")
         raise HTTPException(status_code=400, detail=f"Modelo '{data.model}' não suportado. Modelos disponíveis: {MODELS}")
     
@@ -205,9 +210,42 @@ async def process_image_from_url(data: ImageUrlRequest, request: Request):
         image_bytes = response.content
         logger.debug(f"Imagem baixada com sucesso. Tamanho: {len(image_bytes)} bytes")
         
-        # Remover fundo usando o modelo especificado
-        logger.debug(f"Removendo fundo com modelo: {data.model}")
-        processed_bytes = remove_bg(image_bytes, model_key=data.model)
+        # Lógica de processamento baseada no tipo
+        if data.processing_type == "remove_bg":
+            logger.debug(f"Removendo fundo com modelo: {data.model}")
+            processed_bytes = remove_bg(image_bytes, model_key=data.model)
+
+        elif data.processing_type == "crop":
+            logger.debug("Iniciando recorte circular...")
+            pil_image = Image.open(io.BytesIO(image_bytes)).convert("RGBA")
+            face_coords = detect_face_from_bytes(image_bytes)
+            if not face_coords:
+                logger.warning("Nenhuma face encontrada, usando fallback para o centro da imagem.")
+                w, h = pil_image.size
+                face_size = min(w, h) // 3
+                face_x = (w - face_size) // 2
+                face_y = (h - face_size) // 2
+                face_coords = (face_x, face_y, face_size, face_size)
+            result_image = crop_to_round_centered_on_face(pil_image, face_coords)
+            processed_bytes = bytes_to_png_rgba(result_image)
+
+        elif data.processing_type == "crop_remove_bg":
+            logger.debug(f"Removendo fundo com modelo: {data.model}")
+            bg_removed_bytes = remove_bg(image_bytes, model_key=data.model)
+            
+            logger.debug("Iniciando recorte circular na imagem sem fundo...")
+            pil_image_no_bg = Image.open(io.BytesIO(bg_removed_bytes)).convert("RGBA")
+            face_coords = detect_face_from_bytes(image_bytes) # Detectar na original
+            if not face_coords:
+                logger.warning("Nenhuma face encontrada, usando fallback para o centro da imagem.")
+                w, h = pil_image_no_bg.size
+                face_size = min(w, h) // 3
+                face_x = (w - face_size) // 2
+                face_y = (h - face_size) // 2
+                face_coords = (face_x, face_y, face_size, face_size)
+            result_image = crop_to_round_centered_on_face(pil_image_no_bg, face_coords)
+            processed_bytes = bytes_to_png_rgba(result_image)
+
         
         # Gerar nome único para o arquivo
         unique_id = str(uuid.uuid4())
