@@ -2,7 +2,7 @@ from fastapi import APIRouter, UploadFile, File, HTTPException, status, Request
 from fastapi.responses import Response
 from src.services.face import detect_face_from_bytes
 from src.services.background import remove_bg
-from src.utils.images import crop_to_round_centered_on_face, crop_round_portrait_composed, draw_face_on_image
+from src.utils.images import crop_to_round_centered_on_face, crop_round_portrait_composed, draw_face_on_image, crop_to_square_centered_on_face
 from src.utils.io import bytes_to_png_rgba
 from PIL import Image
 import io
@@ -213,7 +213,20 @@ async def process_image_from_url(data: ImageUrlRequest, request: Request):
         # Lógica de processamento baseada no tipo
         if data.processing_type == "remove_bg":
             logger.debug(f"Removendo fundo com modelo: {data.model}")
-            processed_bytes = remove_bg(image_bytes, model_key=data.model)
+            bg_removed_bytes = remove_bg(image_bytes, model_key=data.model)
+            
+            logger.debug("Centralizando e redimensionando imagem sem fundo...")
+            pil_image_no_bg = Image.open(io.BytesIO(bg_removed_bytes)).convert("RGBA")
+            face_coords = detect_face_from_bytes(image_bytes) # Detectar na original
+            if not face_coords:
+                logger.warning("Nenhuma face encontrada, usando fallback para o centro da imagem.")
+                w, h = pil_image_no_bg.size
+                face_size = min(w, h) // 3
+                face_x = (w - face_size) // 2
+                face_y = (h - face_size) // 2
+                face_coords = (face_x, face_y, face_size, face_size)
+            result_image = crop_to_square_centered_on_face(pil_image_no_bg, face_coords)
+            processed_bytes = bytes_to_png_rgba(result_image)
 
         elif data.processing_type == "crop":
             logger.debug("Iniciando recorte circular...")

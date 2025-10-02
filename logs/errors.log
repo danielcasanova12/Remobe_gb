@@ -39,3 +39,4 @@ TypeError: __init__(): incompatible constructor arguments. The following argumen
 
 Invoked with: {'providers': ['CPUExecutionProvider']}, 'C:\\Users\\casanova.sistemas\\.u2net\\isnet-anime.onnx', True, False
 2025-10-01 19:58:02 | src.api.v1.endpoints.image | ERROR    | process_image_from_url:277 | Erro ao baixar imagem da URL http://127.0.0.1:8000/static/temp_images/processed_20251001_195713_fa77bf87-e2d3-4f3c-8cf4-c24c8baa581e.png: HTTPConnectionPool(host='127.0.0.1', port=8000): Read timed out. (read timeout=30)
+2025-10-02 09:22:40 | src.api.v1.endpoints.image | ERROR    | process_image_from_url:207 | URL não aponta para uma imagem válida. Content-Type: text/html
