@@ -1,0 +1,41 @@
+2025-10-01 12:22:21 | src.api.v1.endpoints.image | ERROR    | process_image_from_url:282 | Erro inesperado no processamento via URL https://admin.rh.homolog.acesso.io/cdn2/t/320x440,q50/individual/addca1f5-eec9-4c6f-9242-c8ce16383af3/person/brazil/6dd4676f-9a6f-4b55-95af-273ddd262a1c.jpeg: No session class found for model 'models/onnx/BiRefNet_HR-general-finetuned.onnx'
+Traceback (most recent call last):
+  File "C:\GIT_lar\Remove_bg\rm_bg_back\src\api\v1\endpoints\image.py", line 216, in process_image_from_url
+    processed_bytes = remove_bg(image_bytes, model_key=data.model)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\GIT_lar\Remove_bg\rm_bg_back\src\services\background.py", line 18, in remove_bg
+    session = get_session(model_key)
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\GIT_lar\Remove_bg\rm_bg_back\src\services\background.py", line 15, in get_session
+    return new_session(model_path_or_name, providers=settings.ONNX_PROVIDERS)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\GIT_lar\Remove_bg\rm_bg_back\venv\Lib\site-packages\rembg\session_factory.py", line 39, in new_session
+    raise ValueError(f"No session class found for model '{model_name}'")
+ValueError: No session class found for model 'models/onnx/BiRefNet_HR-general-finetuned.onnx'
+2025-10-01 12:26:25 | src.api.v1.endpoints.image | ERROR    | process_image_from_url:282 | Erro inesperado no processamento via URL https://admin.rh.homolog.acesso.io/cdn2/t/320x440,q50/individual/addca1f5-eec9-4c6f-9242-c8ce16383af3/person/brazil/6dd4676f-9a6f-4b55-95af-273ddd262a1c.jpeg: __init__(): incompatible constructor arguments. The following argument types are supported:
+    1. onnxruntime.capi.onnxruntime_pybind11_state.InferenceSession(arg0: onnxruntime.capi.onnxruntime_pybind11_state.SessionOptions, arg1: str, arg2: bool, arg3: bool)
+
+Invoked with: {'providers': ['CPUExecutionProvider']}, 'C:\\Users\\casanova.sistemas\\.u2net\\isnet-anime.onnx', True, False
+Traceback (most recent call last):
+  File "C:\GIT_lar\Remove_bg\rm_bg_back\src\api\v1\endpoints\image.py", line 216, in process_image_from_url
+    processed_bytes = remove_bg(image_bytes, model_key=data.model)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\GIT_lar\Remove_bg\rm_bg_back\src\services\background.py", line 35, in remove_bg
+    session = get_session(model_key)
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\GIT_lar\Remove_bg\rm_bg_back\src\services\background.py", line 29, in get_session
+    return session_class(model_key, sess_opts={'providers': settings.ONNX_PROVIDERS}, onnx_path=local_path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\GIT_lar\Remove_bg\rm_bg_back\venv\Lib\site-packages\rembg\sessions\base.py", line 34, in __init__
+    self.inner_session = ort.InferenceSession(
+                         ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\GIT_lar\Remove_bg\rm_bg_back\venv\Lib\site-packages\onnxruntime\capi\onnxruntime_inference_collection.py", line 472, in __init__
+    self._create_inference_session(providers, provider_options, disabled_optimizers)
+  File "C:\GIT_lar\Remove_bg\rm_bg_back\venv\Lib\site-packages\onnxruntime\capi\onnxruntime_inference_collection.py", line 550, in _create_inference_session
+    sess = C.InferenceSession(session_options, self._model_path, True, self._read_config_from_model)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: __init__(): incompatible constructor arguments. The following argument types are supported:
+    1. onnxruntime.capi.onnxruntime_pybind11_state.InferenceSession(arg0: onnxruntime.capi.onnxruntime_pybind11_state.SessionOptions, arg1: str, arg2: bool, arg3: bool)
+
+Invoked with: {'providers': ['CPUExecutionProvider']}, 'C:\\Users\\casanova.sistemas\\.u2net\\isnet-anime.onnx', True, False
+2025-10-01 19:58:02 | src.api.v1.endpoints.image | ERROR    | process_image_from_url:277 | Erro ao baixar imagem da URL http://127.0.0.1:8000/static/temp_images/processed_20251001_195713_fa77bf87-e2d3-4f3c-8cf4-c24c8baa581e.png: HTTPConnectionPool(host='127.0.0.1', port=8000): Read timed out. (read timeout=30)

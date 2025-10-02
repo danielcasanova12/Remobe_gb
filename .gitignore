@@ -2,3 +2,6 @@ venv/
 src/utils/__pycache__/__init__.cpython-312.pyc
 temp_images/
 *__pycache__*
+src/models/oonx/BiRefNet_HR-general-finetuned.onnx
+src/models/oonx/BiRefNet-general-epoch_244.onnx
+.gitignore

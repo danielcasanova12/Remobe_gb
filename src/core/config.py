@@ -1,5 +1,6 @@
 from pydantic_settings import BaseSettings
 import os
+from typing import List, Dict
 
 class Settings(BaseSettings):
     API_V1_PREFIX: str = "/api/v1"
@@ -12,7 +13,8 @@ class Settings(BaseSettings):
     LOG_FILE_MAX_SIZE: int = int(os.getenv("LOG_FILE_MAX_SIZE", "10485760"))  # 10MB
     LOG_FILE_BACKUP_COUNT: int = int(os.getenv("LOG_FILE_BACKUP_COUNT", "5"))
     
-    # Adicione outras configs conforme necessário
+    # Configurações de ONNX Runtime
+    ONNX_PROVIDERS: List[str] = ["CPUExecutionProvider"]
 
     class Config:
         env_file = ".env"
